@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Encriptador</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<main> 
+    <header><h1> ENCRIPTADOR </h1></header>
+    <div class="mensaje">
+        <textarea placeholder="Debe funcionar solo con letras minúsculas. No deben ser utilizados letras con acentos ni caracteres especiales"></textarea>
+    </div>
+
+    <div class="resultados"> 
+        <textarea id="resultado" readonly> </textarea>
+    </div>
+    <div class="botonesendes"> 
+        <ul>
+           <li> <button onclick="encriptador()">Encriptar </button></li> 
+           <li><button onclick="desencriptador()">Desencriptar </button></li>
+          <li><button onclick="limpiar()">Limpiar</button></li>
+        </ul>
+    </div>
+
+</main>
+    <footer>Jose Manuel Diaz Bahena 
+        @Linkedln
+    </footer>
+    
+</body>
+</html>
+
+
+
+<script>
+   
+   
+
+    function desencriptador(){
+
+       var texto=document.querySelector("textarea").value;
+        desencriptado=texto;
+       desencriptado=desencriptado.replace(/enter/g,"e");
+       desencriptado=desencriptado.replace(/ai/g,"a");
+       desencriptado=desencriptado.replace(/imes/g,"i");
+       desencriptado=desencriptado.replace(/ober/g,"o");
+       desencriptado=desencriptado.replace(/ufat/g,"u");
+       
+       document.querySelector("#resultado").value=desencriptado;
+       var vacio = document.getElementById("vacio");
+
+  }
+
+    
+
+    function encriptador(){
+
+      var texto=document.querySelector("textarea").value;
+      var encriptado=[];
+
+
+      for(x=0;x<=texto.length;x++){
+
+       switch (texto[x]){
+
+        case "e":
+            encriptado[x]="enter";
+            break;
+
+         case "a":
+            encriptado[x]="ai";
+            break;
+
+         case "i":
+            encriptado[x]="imes";
+            break;
+
+         case "o":
+            encriptado[x]="ober";
+            break;
+
+         case "u":
+            encriptado[x]="ufat";
+            break;
+
+        default:
+            encriptado[x]=texto[x];
+       }       
+    }
+    document.querySelector("#resultado").value=encriptado.join("");
+    }
+
+function limpiar() {
+    document.querySelector("textarea").value = "";
+    document.querySelector("#resultado").value = "";
+}
+
+document.body.addEventListener("pointermove", (e)=>{
+  const { currentTarget: el, clientX: x, clientY: y } = e;
+  const { top: t, left: l, width: w, height: h } = el.getBoundingClientRect();
+  el.style.setProperty('--posX',  x-l-w/2);
+  el.style.setProperty('--posY',  y-t-h/2);
+})
+
+
+   
+
+
+
+</script>
+
+
